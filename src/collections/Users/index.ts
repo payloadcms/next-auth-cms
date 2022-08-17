@@ -43,11 +43,8 @@ const Users: CollectionConfig = {
       },
       // Default role is 'customer'
       defaultValue: ['customer'],
-      options: [
-        'admin',
-        'customer',
-      ]
-    }
+      options: ['admin', 'customer'],
+    },
   ],
 };
 

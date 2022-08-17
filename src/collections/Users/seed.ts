@@ -1,18 +1,18 @@
-import { Payload } from "payload"
+import { Payload } from 'payload';
 
 const adminUser = {
   email: 'dev@payloadcms.com',
   password: 'test',
   firstName: 'Jane',
   lastName: 'Doe',
-}
+};
 
 const customerUser = {
   email: 'customer@payloadcms.com',
   password: 'test',
   firstName: 'Bob',
   lastName: 'Customer',
-}
+};
 
 export const seedUsers = async (payload: Payload): Promise<void> => {
   // On init, we'll check to see if there is an admin user
@@ -21,9 +21,9 @@ export const seedUsers = async (payload: Payload): Promise<void> => {
     where: {
       email: {
         equals: adminUser.email,
-      }
-    }
-  })
+      },
+    },
+  });
 
   // If there isn't, then seed admin user
   if (adminUserQuery.docs.length === 0) {
@@ -33,9 +33,9 @@ export const seedUsers = async (payload: Payload): Promise<void> => {
         ...adminUser,
         roles: ['admin'],
       },
-    })
+    });
 
-    payload.logger.info('Admin user seeded successfully!')
+    payload.logger.info('Admin user seeded successfully!');
   }
 
   // Also check to see if there is a customer user
@@ -44,9 +44,9 @@ export const seedUsers = async (payload: Payload): Promise<void> => {
     where: {
       email: {
         equals: customerUser.email,
-      }
-    }
-  })
+      },
+    },
+  });
 
   // If there isn't, then seed customer user
   if (customerUserQuery.docs.length === 0) {
@@ -55,8 +55,8 @@ export const seedUsers = async (payload: Payload): Promise<void> => {
       data: {
         ...customerUser,
       },
-    })
+    });
 
-    payload.logger.info('Customer user seeded successfully!')
+    payload.logger.info('Customer user seeded successfully!');
   }
-}
+};
