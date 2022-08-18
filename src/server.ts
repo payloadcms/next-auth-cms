@@ -15,12 +15,11 @@ const init = async () => {
     mongoURL: process.env.MONGODB_URI,
     express: app,
     onInit: () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
+      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
     },
-  })
+  });
 
   app.listen(process.env.PORT || 8000);
-}
+};
 
 init();
-

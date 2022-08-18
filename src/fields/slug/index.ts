@@ -1,10 +1,13 @@
 import { Field, FieldHook } from 'payload/types';
 
-const format = (val: string): string => val.replace(/ /g, '-').replace(/[^\w-]+/g, '').toLowerCase();
+const format = (val: string): string =>
+  val
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '')
+    .toLowerCase();
 
 // Format a URL-friendly "slug" automatically
 const formatSlug: FieldHook = ({ value, originalDoc, data }) => {
-
   // If someone passes a value directly to the slug field, use that
   // Make sure to format it so that it's URL-safe
   if (typeof value === 'string') {
@@ -28,18 +31,16 @@ const slug: Field = {
   type: 'text',
   unique: true,
   required: true,
-  // Always validate as true, 
+  // Always validate as true,
   // so we can have this field be required
   // BUT prefilled on the backend
   validate: () => true,
   hooks: {
-    beforeValidate: [
-      formatSlug,
-    ]
+    beforeValidate: [formatSlug],
   },
   admin: {
     position: 'sidebar',
   },
-}
+};
 
 export default slug;

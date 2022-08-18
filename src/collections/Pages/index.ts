@@ -26,6 +26,6 @@ const Pages: CollectionConfig = {
     },
     slug,
   ],
-}
+};
 
 export default Pages;
