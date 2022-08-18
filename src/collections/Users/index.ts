@@ -4,7 +4,29 @@ import { adminsAndUser } from '../../access/adminsAndUser';
 
 const Users: CollectionConfig = {
   slug: 'users',
-  auth: true,
+  auth: {
+    forgotPassword: {
+      generateEmailHTML: ({ token, user }) => {
+        // Use the token provided to allow your user to reset their password
+        // We will send them to the frontend NextJS app instead of sending
+        // them to the Payload admin by default
+        const resetPasswordURL = `${process.env.PAYLOAD_PUBLIC_NEXT_URL}/reset-password?token=${token}`;
+
+        return `
+          <!doctype html>
+          <html>
+            <body>
+              <h1>Hi there</h1>
+              <p>Click below to reset your password.</p>
+              <p>
+                <a href="${resetPasswordURL}">${resetPasswordURL}</a>
+              </p>
+            </body>
+          </html>
+        `;
+      }
+    },
+  },
   admin: {
     useAsTitle: 'email',
   },

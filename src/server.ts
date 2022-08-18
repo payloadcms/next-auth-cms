@@ -12,6 +12,11 @@ app.get('/', (_, res) => {
 
 const init = async () => {
   await payload.initAsync({
+    email: {
+      logMockCredentials: true,
+      fromAddress: 'dev@payloadcms.com',
+      fromName: 'Payload Auth + NextJS Example',
+    },
     secret: process.env.PAYLOAD_SECRET,
     mongoURL: process.env.MONGODB_URI,
     express: app,
