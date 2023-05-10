@@ -1,3 +1,5 @@
+> **NOTICE!** This repo has moved to the official Payload [examples directory](https://github.com/payloadcms/payload/tree/master/examples/auth/cms). Please refer to that repo for all the latest updates.
+
 # Payload + NextJS Auth Example
 
 This repo contains a Payload CMS application set up to demonstrate how you can use Payload's authentication within NextJS apps. This repo in specific contains the files that pertain to the Payload app.
@@ -18,6 +20,3 @@ Follow the steps below to get started with this boilerplate.
 #### Seeded data
 
 This example seeds a homepage as well as two initial users for demo purposes. While great for development, you probably don't need / want this for production, so feel free to delete the `onInit` method out of the `src/payload.config.ts` file.
-
-
-
